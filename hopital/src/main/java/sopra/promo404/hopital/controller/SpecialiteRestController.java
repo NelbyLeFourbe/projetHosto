@@ -61,32 +61,6 @@ public class SpecialiteRestController {
 		return (Specialite) specRepo.findById(id).get();
 	}
 
-	@PatchMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewSpecialite.class)
-	public Specialite partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Specialite specialite = (Specialite) specRepo.findById(id).get();
-
-		for (String key : fields.keySet()) {
-			Object value = fields.get(key);
-
-			Field field = ReflectionUtils.findField(Specialite.class, key);
-
-			if (field.getType().equals(Long.class)) {
-				value = Long.valueOf(value.toString());
-			}
-
-			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, specialite, value);
-		}
-
-		specRepo.save(specialite);
-
-		specialite = (Specialite) specRepo.findById(id).get();
-
-		return specialite;
-	}
-
 	@DeleteMapping("/{id}")
 	@JsonView(Views.ViewSpecialite.class)
 	public void delete(@PathVariable Long id) {

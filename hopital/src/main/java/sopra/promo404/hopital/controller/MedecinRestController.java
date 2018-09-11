@@ -61,32 +61,6 @@ public class MedecinRestController {
 		return (Medecin) medicRepo.findById(id).get();
 	}
 
-	@PatchMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecin.class)
-	public Medecin partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Medecin medecin = (Medecin) medicRepo.findById(id).get();
-
-		for (String key : fields.keySet()) {
-			Object value = fields.get(key);
-
-			Field field = ReflectionUtils.findField(Medecin.class, key);
-
-			if (field.getType().equals(Long.class)) {
-				value = Long.valueOf(value.toString());
-			}
-
-			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, medecin, value);
-		}
-
-		medicRepo.save(medecin);
-
-		medecin = (Medecin) medicRepo.findById(id).get();
-
-		return medecin;
-	}
-
 	@DeleteMapping("/{id}")
 	@JsonView(Views.ViewMedecin.class)
 	public void delete(@PathVariable Long id) {

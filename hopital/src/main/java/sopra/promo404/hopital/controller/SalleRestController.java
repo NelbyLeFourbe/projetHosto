@@ -61,32 +61,6 @@ public class SalleRestController {
 		return (Salle) salleRepo.findById(id).get();
 	}
 
-	@PatchMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewSalle.class)
-	public Salle partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Salle salle = (Salle) salleRepo.findById(id).get();
-
-		for (String key : fields.keySet()) {
-			Object value = fields.get(key);
-
-			Field field = ReflectionUtils.findField(Salle.class, key);
-
-			if (field.getType().equals(Long.class)) {
-				value = Long.valueOf(value.toString());
-			}
-
-			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, salle, value);
-		}
-
-		salleRepo.save(salle);
-
-		salle = (Salle) salleRepo.findById(id).get();
-
-		return salle;
-	}
-
 	@DeleteMapping("/{id}")
 	@JsonView(Views.ViewSalle.class)
 	public void delete(@PathVariable Long id) {
