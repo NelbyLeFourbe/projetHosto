@@ -2,6 +2,7 @@ package sopra.promo404.hopital.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+@Entity
 public class Consultation {
 
 	@GeneratedValue
@@ -33,6 +35,9 @@ public class Consultation {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonView(Views.ViewPatient.class)
 	private Patient patient;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonView(Views.ViewSpecialite.class)
+	private Specialite specialite;
 	
 	
 	public Consultation() {
@@ -43,17 +48,37 @@ public class Consultation {
 		return salle;
 	}
 
-	public Consultation(Long id, Date dateVisiteArrivee, Date dateVisiteFin, Salle salle, Patient patient) {
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Specialite getSpecialite() {
+		return specialite;
+	}
+
+	public void setSpecialite(Specialite specialite) {
+		this.specialite = specialite;
+	}
+
+	public void setSalle(Salle salle) {
+		this.salle = salle;
+	}
+
+	public Consultation(Long id, Date dateVisiteArrivee, Date dateVisiteFin, Salle salle, Patient patient,
+			Specialite specialite) {
 		super();
 		this.id = id;
 		this.dateVisiteArrivee = dateVisiteArrivee;
 		this.dateVisiteFin = dateVisiteFin;
 		this.salle = salle;
 		this.patient = patient;
-	}
-
-	public void setSalle(Salle salle) {
-		this.salle = salle;
+		this.specialite = specialite;
 	}
 
 	public Date getDateVisiteArrivee() {

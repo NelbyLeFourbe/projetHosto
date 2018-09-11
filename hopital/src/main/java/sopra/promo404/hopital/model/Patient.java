@@ -54,6 +54,19 @@ public class Patient {
 	}
 	
 
+	public Patient(Long id, String nom, String prenom, String numeroSecuriteSocial, Civilite civilite,
+			List<Consultation> consultations, FileAttente fileAttente) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numeroSecuriteSocial = numeroSecuriteSocial;
+		this.civilite = civilite;
+		this.consultations = consultations;
+		this.fileAttente = fileAttente;
+	}
+
+
 	public String getPrenom() {
 		return prenom;
 	}
