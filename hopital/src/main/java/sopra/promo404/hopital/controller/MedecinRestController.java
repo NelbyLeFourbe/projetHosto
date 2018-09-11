@@ -45,6 +45,7 @@ public class MedecinRestController {
 
 	@PostMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewMedecin.class)
 	public Medecin add(@RequestBody Medecin medecin) {
 		medicRepo.save(medecin);
 
@@ -53,6 +54,7 @@ public class MedecinRestController {
 
 	@PutMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewMedecin.class)
 	public Medecin edit(@RequestBody Medecin medecin, @PathVariable Long id) {
 		medicRepo.save(medecin);
 
@@ -61,6 +63,7 @@ public class MedecinRestController {
 
 	@PatchMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewMedecin.class)
 	public Medecin partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Medecin medecin = (Medecin) medicRepo.findById(id).get();
 
@@ -85,6 +88,7 @@ public class MedecinRestController {
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewMedecin.class)
 	public void delete(@PathVariable Long id) {
 		medicRepo.deleteById(id);
 	}

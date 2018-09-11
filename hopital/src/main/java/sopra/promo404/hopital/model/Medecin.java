@@ -1,20 +1,36 @@
 package sopra.promo404.hopital.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Medecin {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
+	@JsonView(Views.ViewCommon.class)
 	private Convention conventionne;
+	@JsonView(Views.ViewCommon.class)
 	private boolean carteVitale;
+	@JsonView(Views.ViewCommon.class)
 	private boolean cmu;
+	@OneToMany
+	@JsonView(Views.ViewMedecinWithSpecialite.class)
+	private List<Specialite> specialites = new ArrayList<>();
 
 	public Medecin() {
 		super();
@@ -83,6 +99,14 @@ public class Medecin {
 
 	public void setCmu(boolean cmu) {
 		this.cmu = cmu;
+	}
+
+	public List<Specialite> getSpecialites() {
+		return specialites;
+	}
+
+	public void setSpecialites(List<Specialite> specialites) {
+		this.specialites = specialites;
 	}
 
 }
