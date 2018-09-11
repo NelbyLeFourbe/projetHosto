@@ -26,7 +26,7 @@ public class FileAttente {
 	private Secretaire secretaire;
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
 	private List<Patient> patients = new ArrayList<>();
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Medecin medecin;
 
 	public FileAttente(Long id, int capacite, Secretaire secretaire, List<Patient> patients, Medecin medecin) {

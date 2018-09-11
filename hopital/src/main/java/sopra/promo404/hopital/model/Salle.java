@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class Salle {
 	private int version;
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
-	@OneToOne
+	@OneToOne(mappedBy = "salle", fetch=FetchType.LAZY)
 	private Medecin medecin;
 	@OneToMany
 	private List<Consultation> consultations = new ArrayList<>();
