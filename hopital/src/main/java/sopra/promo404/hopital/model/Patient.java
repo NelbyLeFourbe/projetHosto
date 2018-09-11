@@ -41,7 +41,7 @@ public class Patient {
 	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
 	@JsonView(Views.ViewConsultation.class)
-	@OneToMany(mappedBy = "consultation", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "patient", fetch=FetchType.EAGER)
 	private List<Consultation> consultations = new ArrayList<>();
 	
 	@ManyToOne(fetch=FetchType.EAGER)

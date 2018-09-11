@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import sopra.promo404.hopital.model.Patient;
+import sopra.promo404.hopital.model.Secretaire;
 import sopra.promo404.hopital.repository.IRepositoryPatient;
 
 @RunWith(SpringRunner.class)
@@ -18,6 +19,8 @@ public class HopitalApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		
+//		Patient creation
 
 		Patient gerard = new Patient();
 		gerard.setNom("Gerard");
@@ -28,6 +31,12 @@ public class HopitalApplicationTests {
 		gilles.setNom("Gilles");
 
 		repoPatient.save(gilles);
+		
+//		Secretaire creation
+		
+		Secretaire jeanlou = new Secretaire(); 
+		
+		
 		
 	}
 }

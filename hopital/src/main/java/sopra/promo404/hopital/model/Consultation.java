@@ -31,15 +31,25 @@ public class Consultation {
 	@JsonView(Views.ViewSalle.class)
 	private Salle salle;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonView(Views.ViewSpecialite.class)
-	private Consultation consultation;
-
+	@JsonView(Views.ViewPatient.class)
+	private Patient patient;
+	
+	
 	public Consultation() {
 		super();
 	}
 
 	public Salle getSalle() {
 		return salle;
+	}
+
+	public Consultation(Long id, Date dateVisiteArrivee, Date dateVisiteFin, Salle salle, Patient patient) {
+		super();
+		this.id = id;
+		this.dateVisiteArrivee = dateVisiteArrivee;
+		this.dateVisiteFin = dateVisiteFin;
+		this.salle = salle;
+		this.patient = patient;
 	}
 
 	public void setSalle(Salle salle) {
