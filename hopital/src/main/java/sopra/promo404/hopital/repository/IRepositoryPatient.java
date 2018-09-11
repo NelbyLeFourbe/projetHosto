@@ -13,7 +13,7 @@ public interface IRepositoryPatient extends JpaRepository<Patient, Long> {
 	List<Patient> findAllPatient();
 
 	
-	@Query("select distinct p from Patient p join fetch p.consultations c where p.id = :id")
+	@Query("select distinct p from Patient p join fetch p.consultation c where p.id = :id")
 	Patient findPatientByIdWithConsultations(@Param("id") Long id);
 
 }

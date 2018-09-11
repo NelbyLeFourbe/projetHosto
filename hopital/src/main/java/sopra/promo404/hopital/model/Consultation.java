@@ -29,13 +29,13 @@ public class Consultation {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonView(Views.ViewCommon.class)
 	private Date dateVisiteFin;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonView(Views.ViewSalle.class)
 	private Salle salle;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonView(Views.ViewPatient.class)
 	private Patient patient;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonView(Views.ViewSpecialite.class)
 	private Specialite specialite;
 	

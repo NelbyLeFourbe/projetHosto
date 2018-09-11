@@ -24,9 +24,9 @@ public class FileAttente {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "secretaire_id")
 	private Secretaire secretaire;
-	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.LAZY)
 	private List<Patient> patients = new ArrayList<>();
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	private Medecin medecin;
 
 	public FileAttente(Long id, int capacite, Secretaire secretaire, List<Patient> patients, Medecin medecin) {

@@ -31,10 +31,10 @@ public class Medecin {
 	private boolean carteVitale;
 	@JsonView(Views.ViewCommon.class)
 	private boolean cmu;
-	@OneToMany(mappedBy = "medecin", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "medecin", fetch=FetchType.LAZY)
 	@JsonView(Views.ViewMedecinWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<>();
-	@OneToMany(mappedBy = "medecin", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "medecin", fetch=FetchType.LAZY)
 	private List<FileAttente> fileAttentes = new ArrayList<>();
 	@OneToOne(fetch=FetchType.LAZY)
 	private Salle salle;

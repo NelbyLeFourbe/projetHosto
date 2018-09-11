@@ -29,7 +29,7 @@ public class Secretaire {
     @Column(length=100)
     private boolean enPause;
     @JsonView(Views.ViewFileAttente.class)
-    @OneToMany(mappedBy = "secretaire", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "secretaire", fetch=FetchType.LAZY)
     private List<FileAttente> filesAttente = new ArrayList<>();
 	
     public Secretaire() {

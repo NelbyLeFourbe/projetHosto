@@ -10,9 +10,13 @@ import sopra.promo404.hopital.model.Patient;
 
 
 public interface IRepositoryConsultation extends JpaRepository<Consultation, Long> {
-
+	
+	
+	@Query("select c from Consultation c")
 	List<Consultation> findAllConsultation();
-	@Query("select c from Consultation c left join fetch c.salles s where c.id = :id")
-	Patient findByIdWithSalles(Long id);
+	
+	
+	@Query("select c from Consultation c left join fetch c.salle s where c.id = :id")
+	Consultation findByIdWithSalles(Long id);
 
 }

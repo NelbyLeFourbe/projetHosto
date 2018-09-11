@@ -40,10 +40,10 @@ public class Patient {
 	@Column(length = 10)
 	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
-	@OneToMany(mappedBy = "patient", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
 	@JsonView(Views.ViewConsultation.class)
 	private List<Consultation> consultations = new ArrayList<>();
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn
 	@JsonView(Views.ViewFileAttente.class)
 	private FileAttente fileAttente; 
