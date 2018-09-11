@@ -1,7 +1,5 @@
 package sopra.promo404.hopital.model;
 
-import sopra.promo404.formation.model.Views.ViewCommon;
-
 public class Views {
 	public static class ViewCommon {
 	}
@@ -11,4 +9,11 @@ public class Views {
 	
 	public static class ViewFileAttente extends ViewCommon {
 	}
+
+	public static class ViewMedecin extends ViewCommon {
+	}
+
+	public static class ViewMedecinWithSpecialite extends ViewCommon {
+	}
+
 }
