@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class FileAttente {
@@ -23,6 +24,7 @@ public class FileAttente {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "secretaire_id")
 	private Secretaire secretaire;
+	@Transient
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
 	private List<Patient> patients = new ArrayList<>();
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -28,9 +29,11 @@ public class Medecin {
 	private boolean carteVitale;
 	@JsonView(Views.ViewCommon.class)
 	private boolean cmu;
+	@Transient
 	@OneToMany
 	@JsonView(Views.ViewMedecinWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<>();
+	@Transient
 	@OneToMany
 	private List<FileAttente> fileAttentes = new ArrayList<>();
 	private Salle salle;
