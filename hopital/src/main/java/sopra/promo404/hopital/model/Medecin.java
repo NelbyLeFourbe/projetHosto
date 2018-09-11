@@ -31,6 +31,9 @@ public class Medecin {
 	@OneToMany
 	@JsonView(Views.ViewMedecinWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<>();
+	@OneToMany
+	private List<FileAttente> fileAttentes = new ArrayList<>();
+	private Salle salle;
 
 	public Medecin() {
 		super();
@@ -107,6 +110,14 @@ public class Medecin {
 
 	public void setSpecialites(List<Specialite> specialites) {
 		this.specialites = specialites;
+	}
+
+	public Salle getSalle() {
+		return salle;
+	}
+
+	public void setSalle(Salle salle) {
+		this.salle = salle;
 	}
 
 }

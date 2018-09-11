@@ -3,17 +3,14 @@ package sopra.promo404.hopital.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-@Entity
-public class Specialite {
+public class Salle {
 	@Id
 	@GeneratedValue
 	@JsonView(Views.ViewCommon.class)
@@ -21,23 +18,19 @@ public class Specialite {
 	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@JsonView(Views.ViewCommon.class)
-	private String libelle;
-	@JsonView(Views.ViewCommon.class)
-	private Float tarif;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonView(Views.ViewMedecinWithSpecialite.class)
+	private String nom;
+	@OneToOne
 	private Medecin medecin;
 	@OneToMany
 	private List<Consultation> consultations = new ArrayList<>();
 
-	public Specialite() {
+	public Salle() {
 		super();
 	}
 
-	public Specialite(String libelle, Float tarif) {
+	public Salle(String nom) {
 		super();
-		this.libelle = libelle;
-		this.tarif = tarif;
+		this.nom = nom;
 	}
 
 	public Long getId() {
@@ -56,20 +49,12 @@ public class Specialite {
 		this.version = version;
 	}
 
-	public String getLibelle() {
-		return libelle;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-	public Float getTarif() {
-		return tarif;
-	}
-
-	public void setTarif(Float tarif) {
-		this.tarif = tarif;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public Medecin getMedecin() {
@@ -78,6 +63,14 @@ public class Specialite {
 
 	public void setMedecin(Medecin medecin) {
 		this.medecin = medecin;
+	}
+
+	public List<Consultation> getConsultations() {
+		return consultations;
+	}
+
+	public void setConsultations(List<Consultation> consultations) {
+		this.consultations = consultations;
 	}
 
 }
