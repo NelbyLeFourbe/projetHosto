@@ -43,13 +43,15 @@ public class Patient {
 	@JsonView(Views.ViewConsultation.class)
 	@OneToMany(mappedBy = "patient", fetch=FetchType.EAGER)
 	private List<Consultation> consultations = new ArrayList<>();
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn
 	@JsonView(Views.ViewFileAttente.class)
 	private FileAttente fileAttente; 
 	
 	
+	public Patient() {
+		super();
+	}
 	
 
 	public String getPrenom() {
@@ -84,9 +86,7 @@ public class Patient {
 		this.fileAttente = fileattente;
 	}
 
-	public Patient() {
-		super();
-	}
+
 
 	public Patient(String nom) {
 		super();
@@ -109,4 +109,20 @@ public class Patient {
 		this.nom = nom;
 	}
 
+
+public List<Consultation> getConsultations() {
+	return consultations;
+}
+
+public void setConsultations(List<Consultation> consultations) {
+	this.consultations = consultations;
+}
+
+public FileAttente getFileAttente() {
+	return fileAttente;
+}
+
+public void setFileAttente(FileAttente fileAttente) {
+	this.fileAttente = fileAttente;
+}
 }
