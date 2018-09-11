@@ -13,6 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.promo404.formation.model.Eleve;
+import sopra.promo404.formation.model.Views;
+
+
+
 
 
 @Entity
@@ -20,18 +27,28 @@ public class Patient {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String numeroSecuriteSocial; 
 	@Enumerated
 	@Column(length = 10)
+	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
+	@JsonView(Views.ViewConsultation.class)
+	@OneToMany(mappedBy = "consultation", fetch=FetchType.EAGER)
+	private List<Consultation> consultations = new ArrayList<>();
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn
+	@JsonView(Views.ViewFileAttente.class)
 	private FileAttente fileAttente; 
 	
 	
