@@ -62,11 +62,11 @@ public class Patient {
 	}
 
 	public FileAttente getFileattente() {
-		return fileattente;
+		return fileAttente;
 	}
 
 	public void setFileattente(FileAttente fileattente) {
-		this.fileattente = fileattente;
+		this.fileAttente = fileattente;
 	}
 
 	public Patient() {
