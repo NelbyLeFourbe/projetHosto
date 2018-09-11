@@ -15,6 +15,7 @@ public class Views {
 
 	public static class ViewMedecinWithSpecialite extends ViewMedecin {
 	}
+	
 
 	public static class ViewSpecialite extends ViewCommon {
 	}
@@ -24,7 +25,7 @@ public class Views {
 
 	public static class ViewSecretaireWithFileAttente extends ViewSecretaire {
 	}
-
-	public static class ViewSalle extends ViewCommon {
+	
+	public static class ViewFileAttenteWithSecretaire extends ViewFileAttente {
 	}
 }

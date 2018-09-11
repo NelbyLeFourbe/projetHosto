@@ -32,7 +32,7 @@ public class Patient {
 	private Civilite civilite;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn
-	private FileAttente fileattente; 
+	private FileAttente fileAttente; 
 	
 	
 	

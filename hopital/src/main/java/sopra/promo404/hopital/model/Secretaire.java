@@ -31,5 +31,60 @@ public class Secretaire {
     @JsonView(Views.ViewFileAttente.class)
     @OneToMany(mappedBy = "secretaire", fetch=FetchType.EAGER)
     private List<FileAttente> filesAttente = new ArrayList<>();
+	
+    public Secretaire() {
+		super();
+	}
+
+	public Secretaire(Long id, String nom, Civilite civilite, boolean enPause, List<FileAttente> filesAttente) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.civilite = civilite;
+		this.enPause = enPause;
+		this.filesAttente = filesAttente;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public Civilite getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(Civilite civilite) {
+		this.civilite = civilite;
+	}
+
+	public boolean isEnPause() {
+		return enPause;
+	}
+
+	public void setEnPause(boolean enPause) {
+		this.enPause = enPause;
+	}
+
+	public List<FileAttente> getFilesAttente() {
+		return filesAttente;
+	}
+
+	public void setFilesAttente(List<FileAttente> filesAttente) {
+		this.filesAttente = filesAttente;
+	}
+    
+    
     
 }

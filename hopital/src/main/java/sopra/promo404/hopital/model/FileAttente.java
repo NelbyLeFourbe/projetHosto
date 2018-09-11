@@ -24,12 +24,58 @@ public class FileAttente {
 	@JoinColumn(name = "secretaire_id")
 	private Secretaire secretaire;
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
-	private List<Patient> patients = new ArrayList();
+	private List<Patient> patients = new ArrayList<>();
+	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
+	private List<Medecin> medecins = new ArrayList<>();
 
 	public FileAttente() {
 		super();
 	}
 
+	
+	public FileAttente(Long id) {
+		super();
+		this.id = id;
+	}
+
+
+	public FileAttente(Long id, int capacite, Secretaire secretaire, List<Patient> patients) {
+		super();
+		this.id = id;
+		this.capacite = capacite;
+		this.secretaire = secretaire;
+		this.patients = patients;
+	}
+
+	
+	
+	public List<Medecin> getMedecins() {
+		return medecins;
+	}
+
+
+	public void setMedecins(List<Medecin> medecins) {
+		this.medecins = medecins;
+	}
+
+
+	public Secretaire getSecretaire() {
+		return secretaire;
+	}
+
+	public void setSecretaire(Secretaire secretaire) {
+		this.secretaire = secretaire;
+	}
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
+	}
+
+	
 	public FileAttente(Long id, int capacite) {
 		super();
 		this.id = id;
