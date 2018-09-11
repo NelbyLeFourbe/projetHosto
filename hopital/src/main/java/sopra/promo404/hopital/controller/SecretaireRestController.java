@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.promo404.formation.model.Eleve;
-import sopra.promo404.formation.model.Views;
-import sopra.promo404.formation.repository.IRepositoryPersonne;
+import sopra.promo404.hopital.model.Secretaire;
 import sopra.promo404.hopital.repository.IRepositorySecretaire;
 
 @RestController
@@ -29,69 +27,69 @@ import sopra.promo404.hopital.repository.IRepositorySecretaire;
 public class SecretaireRestController {
 
     @Autowired
-    private IRepositorySecretaire seccretaireRepo;
+    private IRepositorySecretaire secretaireRepo;
 
     @GetMapping("")
     @ResponseBody
-    @JsonView(Views.ViewEleve.class)
-    public List<Eleve> list() {
-        return personneRepo.findAllEleve();
+    @JsonView(Views.ViewSecretaire.class)
+    public List<Secretaire> list() {
+        return secretaireRepo.findAllSecretaire();
     }
 
     @GetMapping("/{id}")
     @ResponseBody
-    @JsonView(Views.ViewEleveWithOrdinateur.class)
-    public Eleve detail(@PathVariable Long id) {
-        return personneRepo.findEleveByIdWithOrdinateur(id);
+    @JsonView(Views.ViewSecretaireWithOrdinateur.class)
+    public Secretaire detail(@PathVariable Long id) {
+        return secretaireRepo.findSecretaireByIdWithOrdinateur(id);
     }
 
     @PostMapping("")
     @ResponseBody
-    @JsonView(Views.ViewEleve.class)
-    public Eleve add(@RequestBody Eleve eleve) {
-        personneRepo.save(eleve);
+    @JsonView(Views.ViewSecretaire.class)
+    public Secretaire add(@RequestBody Secretaire secretaire) {
+        secretaireRepo.save(secretaire);
 
-        return eleve;
+        return secretaire;
     }
 
     @PutMapping("/{id}")
     @ResponseBody
-    @JsonView(Views.ViewEleve.class)
-    public Eleve edit(@RequestBody Eleve eleve, @PathVariable Long id) {
-        personneRepo.save(eleve);
+    @JsonView(Views.ViewSecretaire.class)
+    public Secretaire edit(@RequestBody Secretaire secretaire, @PathVariable Long id) {
+        secretaireRepo.save(secretaire);
 
-        return (Eleve) personneRepo.findById(id).get();
+        return (Secretaire) secretaireRepo.findById(id).get();
     }
 
     @PatchMapping("/{id}")
     @ResponseBody
-    @JsonView(Views.ViewEleve.class)
-    public Eleve partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-        Eleve eleve = (Eleve) personneRepo.findById(id).get();
+    @JsonView(Views.ViewSecretaire.class)
+    public Secretaire partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+        Secretaire secretaire = (Secretaire) secretaireRepo.findById(id).get();
 
         for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
             Object value = fields.get(key);
 
-            Field field = ReflectionUtils.findField(Eleve.class, key);
+            Field field = ReflectionUtils.findField(Secretaire.class, key);
 
             if (field.getType().equals(Long.class)) {
                 value = Long.valueOf(value.toString());
             }
 
             ReflectionUtils.makeAccessible(field);
-            ReflectionUtils.setField(field, eleve, value);
+            ReflectionUtils.setField(field, secretaire, value);
         }
 
-        personneRepo.save(eleve);
+        secretaireRepo.save(secretaire);
 
-        eleve = (Eleve) personneRepo.findById(id).get();
+        secretaire = (Secretaire) secretaireRepo.findById(id).get();
 
-        return eleve;
+        return secretaire;
     }
 
     @DeleteMapping("/{id}")
-    @JsonView(Views.ViewEleve.class)
+    @JsonView(Views.ViewSecretaire.class)
     public void delete(@PathVariable Long id) {
-        personneRepo.deleteById(id);
+        secretaireRepo.deleteById(id);
     }
 }
