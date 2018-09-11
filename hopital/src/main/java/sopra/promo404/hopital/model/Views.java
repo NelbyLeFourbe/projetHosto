@@ -15,13 +15,18 @@ public class Views {
 
 	public static class ViewMedecinWithSpecialite extends ViewMedecin {
 	}
+
 	public static class ViewPatient extends ViewCommon {
 	}
+
+	public static class ViewSalle extends ViewCommon {
+	}
+
 	public static class ViewConsultation extends ViewCommon {
 	}
+
 	public static class ViewPatientWithConsultations extends ViewCommon {
 	}
-	
 
 	public static class ViewSpecialite extends ViewCommon {
 	}
@@ -31,7 +36,7 @@ public class Views {
 
 	public static class ViewSecretaireWithFileAttente extends ViewSecretaire {
 	}
-	
+
 	public static class ViewFileAttenteWithSecretaire extends ViewFileAttente {
 	}
 }

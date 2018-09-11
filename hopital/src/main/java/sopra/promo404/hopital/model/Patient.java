@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.promo404.formation.model.Eleve;
-import sopra.promo404.formation.model.Views;
 
 
 
