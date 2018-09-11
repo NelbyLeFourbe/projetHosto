@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -30,11 +31,11 @@ public class Medecin {
 	@JsonView(Views.ViewCommon.class)
 	private boolean cmu;
 	@Transient
-	@OneToMany
+	@OneToMany(mappedBy = "medecin", fetch=FetchType.EAGER)
 	@JsonView(Views.ViewMedecinWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<>();
 	@Transient
-	@OneToMany
+	@OneToMany(mappedBy = "medecin", fetch=FetchType.EAGER)
 	private List<FileAttente> fileAttentes = new ArrayList<>();
 	private Salle salle;
 

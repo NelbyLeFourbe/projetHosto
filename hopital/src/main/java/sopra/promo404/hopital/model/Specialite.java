@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -27,7 +28,7 @@ public class Specialite {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonView(Views.ViewMedecinWithSpecialite.class)
 	private Medecin medecin;
-	@OneToMany
+	@OneToMany(mappedBy = "specialite", fetch=FetchType.EAGER)
 	private List<Consultation> consultations = new ArrayList<>();
 
 	public Specialite() {
