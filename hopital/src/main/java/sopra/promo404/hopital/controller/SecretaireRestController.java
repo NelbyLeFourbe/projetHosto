@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.promo404.hopital.model.Secretaire;
+import sopra.promo404.hopital.model.Views;
 import sopra.promo404.hopital.repository.IRepositorySecretaire;
 
 @RestController
@@ -38,9 +39,9 @@ public class SecretaireRestController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    @JsonView(Views.ViewSecretaireWithOrdinateur.class)
+    @JsonView(Views.ViewSecretaireWithFileAttente.class)
     public Secretaire detail(@PathVariable Long id) {
-        return secretaireRepo.findSecretaireByIdWithOrdinateur(id);
+        return secretaireRepo.findSecretaireByIdWithFileAttente(id);
     }
 
     @PostMapping("")
