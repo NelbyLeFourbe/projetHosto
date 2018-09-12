@@ -32,30 +32,14 @@ public class HopitalApplicationTests {
 	@Test
 	public void contextLoads() {
 		
-//		Patient creation
-
-		Patient gerard = new Patient();
-		gerard.setNom("Bouchard");
-		gerard.setPrenom("Gerard");
-		gerard.setCivilite(Civilite.M);
-		gerard.setNumeroSecuriteSocial("123456BA");
-
-		repoPatient.save(gerard);
-		
-		Patient gilles = new Patient();
-		gerard.setNom("De la Tourette");
-		gerard.setPrenom("Gilles");
-		gerard.setCivilite(Civilite.M);
-		gerard.setNumeroSecuriteSocial("654321ZA");
-
-		repoPatient.save(gilles);
-		
 //		Secretaire creation
 		Secretaire carlotta = new Secretaire();
 		carlotta.setNom("Flantier");
 		carlotta.setPrenom("Carlotta");
 		carlotta.setCivilite(Civilite.MME);
 		carlotta.setEnPause(true);
+		carlotta.setVersion(2);
+		
 	
 		secretaireRepo.save(carlotta);
 		
@@ -64,19 +48,25 @@ public class HopitalApplicationTests {
 		dolores.setPrenom("Dolores");
 		dolores.setCivilite(Civilite.MLLE);
 		dolores.setEnPause(false);
+		dolores.setVersion(2);
 	
 		secretaireRepo.save(dolores);
 		
+//		File Attente
 		FileAttente file1 = new FileAttente();
 		file1.setCapacite(20);
+		file1.setVersion(1);
 		
 		fileAttenteRepo.save(file1);
 		
 		FileAttente file2 = new FileAttente();
 		file2.setCapacite(30);
+		file2.setVersion(1);
 		
 		fileAttenteRepo.save(file2);
 		
+		
+//		Salle
 		Salle salle1 = new Salle();
 		salle1.setNom("Salle Sifi");
 		salle1.setMedecin(jeanphil);
@@ -89,5 +79,29 @@ public class HopitalApplicationTests {
 		salle2.setVersion(0);
 		salleRepo.save(salle2);
 		
+//		Patient creation
+		
+		Patient gerard = new Patient();
+		gerard.setNom("Bouchard");
+		gerard.setPrenom("Gerard");
+		gerard.setCivilite(Civilite.M);
+		gerard.setNumeroSecuriteSocial("123456BA");
+		gerard.setFileAttente(file1);
+		gerard.setConsultations(consultation1);
+		gerard.setVersion(0);
+		
+		repoPatient.save(gerard);
+		
+		Patient gilles = new Patient();
+		gilles.setNom("De la Tourette");
+		gilles.setPrenom("Gilles");
+		gilles.setCivilite(Civilite.M);
+		gilles.setNumeroSecuriteSocial("654321ZA");
+		gilles.setFileAttente(file2);
+		gilles.setConsultations(consultation2);
+		gilles.setVersion(0);
+		
+		repoPatient.save(gilles);
 	}
 }
+

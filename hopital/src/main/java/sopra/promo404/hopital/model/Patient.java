@@ -97,10 +97,15 @@ public class Patient {
 		return fileAttente;
 	}
 
-	public void setFileattente(FileAttente fileattente) {
-		this.fileAttente = fileattente;
+
+	public int getVersion() {
+		return version;
 	}
 
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 
 	public Patient(String nom) {
