@@ -43,14 +43,36 @@ public class Medecin {
 		super();
 	}
 
-	public Medecin(String nom, String prenom, Convention conventionne, boolean carteVitale, boolean cmu) {
+	
+
+	public Medecin(Long id, int version, String nom, String prenom, Convention conventionne, boolean carteVitale,
+			boolean cmu, List<Specialite> specialites, List<FileAttente> fileAttentes, Salle salle) {
 		super();
+		this.id = id;
+		this.version = version;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.conventionne = conventionne;
 		this.carteVitale = carteVitale;
 		this.cmu = cmu;
+		this.specialites = specialites;
+		this.fileAttentes = fileAttentes;
+		this.salle = salle;
 	}
+
+
+
+	public List<FileAttente> getFileAttentes() {
+		return fileAttentes;
+	}
+
+
+
+	public void setFileAttentes(List<FileAttente> fileAttentes) {
+		this.fileAttentes = fileAttentes;
+	}
+
+
 
 	public Long getId() {
 		return id;

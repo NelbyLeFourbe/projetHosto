@@ -32,10 +32,18 @@ public class Salle {
 		super();
 	}
 
-	public Salle(String nom) {
+	
+
+	public Salle(Long id, int version, String nom, Medecin medecin, List<Consultation> consultations) {
 		super();
+		this.id = id;
+		this.version = version;
 		this.nom = nom;
+		this.medecin = medecin;
+		this.consultations = consultations;
 	}
+
+
 
 	public Long getId() {
 		return id;

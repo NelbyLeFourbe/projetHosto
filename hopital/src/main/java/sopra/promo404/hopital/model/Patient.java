@@ -30,6 +30,8 @@ public class Patient {
 	@Column(length = 100)
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
+	private int version;
 	@Column(length = 100)
 	@JsonView(Views.ViewCommon.class)
 	private String prenom;

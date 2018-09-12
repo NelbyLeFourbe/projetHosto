@@ -45,8 +45,8 @@ public class ConsultationRestController {
 
 	@GetMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewPatientWithConsultations.class)
-	public Patient detail(@PathVariable Long id) {
+	@JsonView(Views.ViewPatientWithConsultation.class)
+	public Consultation detail(@PathVariable Long id) {
 		return consultationRepo.findByIdWithSalles(id);
 	}
 

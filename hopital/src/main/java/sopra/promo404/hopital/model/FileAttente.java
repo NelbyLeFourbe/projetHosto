@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 public class FileAttente {
@@ -20,22 +22,46 @@ public class FileAttente {
 	@GeneratedValue
 	private Long id;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private int capacite;
+	@JsonView(Views.ViewCommon.class)
+	private int version;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "secretaire_id")
+	@JsonView(Views.ViewFileAttente.class)
 	private Secretaire secretaire;
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewFileAttente.class)
 	private List<Patient> patients = new ArrayList<>();
 	@ManyToOne
+	@JsonView(Views.ViewFileAttente.class)
 	private Medecin medecin;
 
-	public FileAttente(Long id, int capacite, Secretaire secretaire, List<Patient> patients, Medecin medecin) {
+	
+
+
+	
+
+
+	public FileAttente(Long id, int capacite, int version, Secretaire secretaire, List<Patient> patients,
+			Medecin medecin) {
 		super();
 		this.id = id;
 		this.capacite = capacite;
+		this.version = version;
 		this.secretaire = secretaire;
 		this.patients = patients;
 		this.medecin = medecin;
+	}
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 

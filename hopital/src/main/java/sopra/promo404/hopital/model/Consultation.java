@@ -25,6 +25,8 @@ public class Consultation {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonView(Views.ViewCommon.class)
 	private Date dateVisiteArrivee;
+	@JsonView(Views.ViewCommon.class)
+	private int version;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonView(Views.ViewCommon.class)
@@ -44,11 +46,38 @@ public class Consultation {
 		super();
 	}
 
+	
+	
+	public Consultation(Long id, Date dateVisiteArrivee, int version, Date dateVisiteFin, Salle salle, Patient patient,
+			Specialite specialite) {
+		super();
+		this.id = id;
+		this.dateVisiteArrivee = dateVisiteArrivee;
+		this.version = version;
+		this.dateVisiteFin = dateVisiteFin;
+		this.salle = salle;
+		this.patient = patient;
+		this.specialite = specialite;
+	}
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+
 	public Salle getSalle() {
 		return salle;
 	}
 
-	
 
 	public Long getId() {
 		return id;
