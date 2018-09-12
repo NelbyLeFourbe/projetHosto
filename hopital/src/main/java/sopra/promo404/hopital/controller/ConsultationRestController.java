@@ -1,18 +1,14 @@
 package sopra.promo404.hopital.controller;
 
-import java.lang.reflect.Field;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.ReflectionUtils;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,12 +20,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.promo404.hopital.model.Views;
 import sopra.promo404.hopital.model.Consultation;
-import sopra.promo404.hopital.model.Patient;
+
 import sopra.promo404.hopital.repository.IRepositoryConsultation;
-import sopra.promo404.hopital.repository.IRepositoryPatient;
+
 
 @Controller
-@RequestMapping("/patient")
+@RequestMapping("/consultation")
 public class ConsultationRestController {
 
 	@Autowired
