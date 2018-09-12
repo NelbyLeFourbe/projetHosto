@@ -12,13 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
-
-
-
-
-
 
 @Entity
 public class Patient {
@@ -31,30 +27,29 @@ public class Patient {
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@JsonView(Views.ViewCommon.class)
+	@Version
 	private int version;
 	@Column(length = 100)
 	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column(length = 100)
 	@JsonView(Views.ViewCommon.class)
-	private String numeroSecuriteSocial; 
+	private String numeroSecuriteSocial;
 	@Enumerated
 	@Column(length = 10)
 	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
-	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
 	@JsonView(Views.ViewConsultation.class)
 	private List<Consultation> consultations = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn
 	@JsonView(Views.ViewFileAttente.class)
-	private FileAttente fileAttente; 
-	
-	
+	private FileAttente fileAttente;
+
 	public Patient() {
 		super();
 	}
-	
 
 	public Patient(Long id, String nom, String prenom, String numeroSecuriteSocial, Civilite civilite,
 			List<Consultation> consultations, FileAttente fileAttente) {
@@ -67,7 +62,6 @@ public class Patient {
 		this.consultations = consultations;
 		this.fileAttente = fileAttente;
 	}
-
 
 	public String getPrenom() {
 		return prenom;
@@ -97,16 +91,13 @@ public class Patient {
 		return fileAttente;
 	}
 
-
 	public int getVersion() {
 		return version;
 	}
 
-
 	public void setVersion(int version) {
 		this.version = version;
 	}
-
 
 	public Patient(String nom) {
 		super();
@@ -129,20 +120,19 @@ public class Patient {
 		this.nom = nom;
 	}
 
+	public List<Consultation> getConsultations() {
+		return consultations;
+	}
 
-public List<Consultation> getConsultations() {
-	return consultations;
-}
+	public void setConsultations(List<Consultation> consultations) {
+		this.consultations = consultations;
+	}
 
-public void setConsultations(List<Consultation> consultations) {
-	this.consultations = consultations;
-}
+	public FileAttente getFileAttente() {
+		return fileAttente;
+	}
 
-public FileAttente getFileAttente() {
-	return fileAttente;
-}
-
-public void setFileAttente(FileAttente fileAttente) {
-	this.fileAttente = fileAttente;
-}
+	public void setFileAttente(FileAttente fileAttente) {
+		this.fileAttente = fileAttente;
+	}
 }

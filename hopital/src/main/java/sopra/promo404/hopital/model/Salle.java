@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -20,6 +21,7 @@ public class Salle {
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@JsonView(Views.ViewCommon.class)
+	@Version
 	private int version;
 	@JsonView(Views.ViewCommon.class)
 	private String nom;

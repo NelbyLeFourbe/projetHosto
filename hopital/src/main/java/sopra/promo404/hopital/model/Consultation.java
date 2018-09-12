@@ -3,12 +3,13 @@ package sopra.promo404.hopital.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,6 +27,7 @@ public class Consultation {
 	@JsonView(Views.ViewCommon.class)
 	private Date dateVisiteArrivee;
 	@JsonView(Views.ViewCommon.class)
+	@Version
 	private int version;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

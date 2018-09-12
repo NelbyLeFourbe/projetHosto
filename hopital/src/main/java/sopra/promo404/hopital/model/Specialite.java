@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -20,6 +21,7 @@ public class Specialite {
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@JsonView(Views.ViewCommon.class)
+	@Version
 	private int version;
 	@JsonView(Views.ViewCommon.class)
 	private String libelle;
@@ -33,6 +35,14 @@ public class Specialite {
 
 	public Specialite() {
 		super();
+	}
+
+	public List<Consultation> getConsultations() {
+		return consultations;
+	}
+
+	public void setConsultations(List<Consultation> consultations) {
+		this.consultations = consultations;
 	}
 
 	public Specialite(String libelle, Float tarif) {

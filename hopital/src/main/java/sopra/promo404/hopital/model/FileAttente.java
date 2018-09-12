@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -25,6 +26,7 @@ public class FileAttente {
 	@JsonView(Views.ViewCommon.class)
 	private int capacite;
 	@JsonView(Views.ViewCommon.class)
+	@Version
 	private int version;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "secretaire_id")
