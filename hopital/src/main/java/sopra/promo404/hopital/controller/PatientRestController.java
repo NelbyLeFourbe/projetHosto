@@ -7,7 +7,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.promo404.hopital.model.Views;
 
+
+import sopra.promo404.hopital.model.Views;
+import sopra.promo404.hopital.exception.PatientValidationException;
 import sopra.promo404.hopital.model.Patient;
 import sopra.promo404.hopital.repository.IRepositoryPatient;
 
@@ -45,14 +46,17 @@ public class PatientRestController {
 	@GetMapping("/{id}")
 	@ResponseBody
 	@JsonView(Views.ViewPatientWithConsultation.class)
-	public Patient detail(@PathVariable Long id) {
+	public Patient detail(@Valid @PathVariable Long id) {
 		return patientRepo.findPatientByIdWithConsultations(id);
 	}
 
 	@PostMapping("")
 	@ResponseBody
 	@JsonView(Views.ViewPatient.class)
-	public Patient add(@Valid @RequestBody Patient patient, BindingResult result) {
+	public Patient add(@RequestBody Patient patient, BindingResult result) {
+		if (result.hasErrors()) {
+			throw new PatientValidationException("Nom oublie");
+		}
 		patientRepo.save(patient);
 
 		return patient;
@@ -64,7 +68,7 @@ public class PatientRestController {
 	public Patient edit(@RequestBody Patient patient, @PathVariable Long id) {
 		patientRepo.save(patient);
 
-		return (Patient) patientRepo.findById(id).get();
+		return  patientRepo.findById(id).get();
 	}
 
 	
